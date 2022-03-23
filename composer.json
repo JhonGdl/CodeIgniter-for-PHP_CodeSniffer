@@ -1,12 +1,12 @@
 {
-    "name": "nerones/codeigniter-phpcs",
-    "description": "Rules for codeigniter",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Thomas ERNEST",
-            "email": "thomas.ernest@gmail.com"
-        }
-    ],
-    "require": {}
+	"name": "jhongdl/codeigniter-phpcs",
+	"description": "Rules for CodeIgniter3",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Thomas ERNEST",
+			"email": "thomas.ernest@gmail.com"
+		}
+	],
+	"require": {}
 }
