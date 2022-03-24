@@ -2,7 +2,6 @@
 
 namespace CodeIgniter\Sniffs\Files;
 
-
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
 /**

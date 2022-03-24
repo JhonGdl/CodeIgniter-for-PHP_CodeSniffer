@@ -124,14 +124,14 @@ class CodeIgniter_Sniffs_NamingConventions_ValidMethodNameSniff extends Abstract
         $scopeSpecified = $methodProps['scope_specified'];
 
         // If it's a private method, it must have an underscore on the front.
-        if ($scope === 'private' && $methodName{0} !== '_') {
+        if ($scope === 'private' && $methodName[0] !== '_') {
             $error = "Private method name \"$className::$methodName\" must be prefixed with an underscore";
             $phpcsFile->addError($error, $stackPtr, 'ValidMethodNameSniff');
             return;
         }
 
         // If it's not a private method, it must not have an underscore on the front.
-        if ($scope !== 'private' && $methodName{0} === '_') {
+        if ($scope !== 'private' && $methodName[0] === '_') {
             if (true === $scopeSpecified) {
                 $error = "Public method name \"$className::$methodName\" must not be prefixed with an underscore";
             } else {

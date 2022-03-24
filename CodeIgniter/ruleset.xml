@@ -13,9 +13,13 @@
   <rule ref="CodeIgniter.Commenting.InlineComment.LongCommentWithoutSpacing">
     <type>warning</type>
   </rule>
+	
+	<!--
   <rule ref="CodeIgniter.Strings.DoubleQuoteUsage">
     <type>warning</type>
   </rule>
+	-->
+	
   <rule ref="CodeIgniter.Files.ClosingLocationComment">
     <type>warning</type>
   </rule>
@@ -42,24 +46,25 @@
   <!-- One statement per line -->
   <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
 
+	<rule ref="CodeIgniter.WhiteSpace.DisallowWitheSpaceAroundPhpTags">
+		<exclude-pattern>views/*</exclude-pattern>
+	</rule>
+
   <!-- Classes and functions should be commented -->
   <rule ref="PEAR.Commenting.ClassComment"/>
   <rule ref="PEAR.Commenting.FunctionComment"/>
   <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
   <!-- Use warnings for docblock comments for files and variables, since nothing is cleary explained -->
-  <!--<rule ref="PEAR.Commenting.FileComment">-->
-    <!--<properties>-->
-      <!--<property name="error" value="false"/>-->
-    <!--</properties>-->
-  <!--</rule>-->
+  <rule ref="PEAR.Commenting.FileComment">
+    <properties>
+      <property name="error" value="false"/>
+    </properties>
+  </rule>
   <rule ref="Squiz.Commenting.VariableComment">
     <properties>
       <property name="error" value="false"/>
     </properties>
   </rule>
-
-  <!-- Use Allman style indenting. With the exception of Class declarations,
-       braces are always placed on a line by themselves, and indented at the same level as the control statement that "owns" them. -->
   <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
   <rule ref="PEAR.WhiteSpace.ScopeClosingBrace"/>
   <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
