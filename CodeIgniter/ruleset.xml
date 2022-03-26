@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ruleset name="CodeIgniter">
-  <description>CodeIgniter coding standard as described at http://codeigniter.com/user_guide/general/styleguide.html.</description>
+  <description>CodeIgniter coding standard as described at
+  http://codeigniter.com/user_guide/general/styleguide.html.</description>
+	
+	<rule ref="CodeIgniter.WhiteSpace.DisallowWitheSpaceAroundPhpTags"/>
+	
   <rule ref="CodeIgniter.NamingConventions.ValidVariableName">
     <severity>1</severity>
   </rule>
@@ -14,11 +18,9 @@
     <type>warning</type>
   </rule>
 	
-	<!--
-  <rule ref="CodeIgniter.Strings.DoubleQuoteUsage">
+  <rule ref="Squiz.Strings.DoubleQuoteUsage">
     <type>warning</type>
   </rule>
-	-->
 	
   <rule ref="CodeIgniter.Files.ClosingLocationComment">
     <type>warning</type>
@@ -46,10 +48,6 @@
   <!-- One statement per line -->
   <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
 
-	<rule ref="CodeIgniter.WhiteSpace.DisallowWitheSpaceAroundPhpTags">
-		<exclude-pattern>views/*</exclude-pattern>
-	</rule>
-
   <!-- Classes and functions should be commented -->
   <rule ref="PEAR.Commenting.ClassComment"/>
   <rule ref="PEAR.Commenting.FunctionComment"/>
@@ -69,6 +67,8 @@
   <rule ref="PEAR.WhiteSpace.ScopeClosingBrace"/>
   <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
 
-  <!-- @todo Please see PHP_CodeSniffer_Standards_CodeIgniter_CodeIgniterCodingStandard for more details about what there is to do -->
+  <!-- @todo Please see
+PHP_CodeSniffer_Standards_CodeIgniter_CodeIgniterCodingStandard for more details
+about what there is to do -->
 </ruleset>
 
