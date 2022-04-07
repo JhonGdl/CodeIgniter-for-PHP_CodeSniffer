@@ -18,7 +18,7 @@
     <type>warning</type>
   </rule>
 	
-  <rule ref="Squiz.Strings.DoubleQuoteUsage">
+  <rule ref="CodeIgniter.Strings.DoubleQuoteUsage">
     <type>warning</type>
   </rule>
 	
