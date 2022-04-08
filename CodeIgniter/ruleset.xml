@@ -3,8 +3,6 @@
   <description>CodeIgniter coding standard as described at
   http://codeigniter.com/user_guide/general/styleguide.html.</description>
 	
-	<rule ref="CodeIgniter.WhiteSpace.DisallowWitheSpaceAroundPhpTags"/>
-	
   <rule ref="CodeIgniter.NamingConventions.ValidVariableName">
     <severity>1</severity>
   </rule>
@@ -44,6 +42,8 @@
 
   <!-- Constants should always be fully uppercase -->
   <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+	<rule ref="Generic.PHP.UpperCaseConstant"/>
 
   <!-- One statement per line -->
   <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
