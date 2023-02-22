@@ -74,9 +74,9 @@ class CodeIgniter_Sniffs_NamingConventions_ValidMethodNameSniff extends Abstract
      * Processes the tokens within the scope.
      *
      * @param File $phpcsFile The file being processed.
-     * @param int                  $stackPtr  The position where this token was
-     *                                        found.
-     * @param int                  $currScope The position of the current scope.
+     * @param int  $stackPtr  The position where this token was
+     *                        found.
+     * @param int  $currScope The position of the current scope.
      *
      * @return void
      */

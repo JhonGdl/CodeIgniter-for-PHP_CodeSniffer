@@ -1,6 +1,8 @@
 <?php
+
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+
 /**
  * CodeIgniter_Sniffs_NamingConventions_ValidFileNameSniff.
  *
@@ -46,8 +48,8 @@ class CodeIgniter_Sniffs_NamingConventions_ValidFileNameSniff implements Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
-     *                                        stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token in the
+     *                        stack passed in $tokens.
      *
      * @return void
      */
@@ -57,9 +59,9 @@ class CodeIgniter_Sniffs_NamingConventions_ValidFileNameSniff implements Sniff
         // computes the expected filename based on the name of the class or interface that it contains.
         $decNamePtr = $phpcsFile->findNext(T_STRING, $stackPtr);
         $decName = $tokens[$decNamePtr]['content'];
-        $expectedFileName = strtolower($decName);
         // extracts filename without extension from its path.
         $fullPath = $phpcsFile->getFilename();
+        $expectedFileName = strstr($fullPath, 'application/controllers') ? ucfirst($decName) : strtolower($decName);
         $fileNameAndExt = basename($fullPath);
         $fileName = substr($fileNameAndExt, 0, strrpos($fileNameAndExt, '.'));
 
@@ -76,5 +78,3 @@ class CodeIgniter_Sniffs_NamingConventions_ValidFileNameSniff implements Sniff
         }
     }
 }
-
-?>

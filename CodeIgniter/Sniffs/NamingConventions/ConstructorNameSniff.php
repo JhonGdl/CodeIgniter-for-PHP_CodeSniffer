@@ -53,9 +53,9 @@ class CodeIgniter_Sniffs_NamingConventions_ConstructorNameSniff extends Abstract
      * Processes this test when one of its tokens is encountered.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
-     * @param int                  $currScope A pointer to the start of the scope.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
+     * @param int  $currScope A pointer to the start of the scope.
      *
      * @return void
      */
@@ -67,8 +67,8 @@ class CodeIgniter_Sniffs_NamingConventions_ConstructorNameSniff extends Abstract
         $methodName = $phpcsFile->getDeclarationName($stackPtr);
         $className  = $phpcsFile->getDeclarationName($currScope);
 
-	$isPhp4Constructor = strcasecmp($methodName, $className) === 0;
-	$isPhp5Constructor = strcasecmp($methodName, '__construct') === 0;
+        $isPhp4Constructor = strcasecmp($methodName, $className) === 0;
+        $isPhp5Constructor = strcasecmp($methodName, '__construct') === 0;
         if ($this->php5Constructors != '0') {
             if ($isPhp4Constructor) {
                 $error = "PHP4 style constructors are not allowed; use \"__construct\" instead";
@@ -80,7 +80,7 @@ class CodeIgniter_Sniffs_NamingConventions_ConstructorNameSniff extends Abstract
                 $phpcsFile->addError($error, $stackPtr, 'ConstructorNameSniff::PHP5');
             }
         }
-        if ( ! $isPhp4Constructor && ! $isPhp5Constructor ) {
+        if (! $isPhp4Constructor && ! $isPhp5Constructor ) {
             return;
         }
 

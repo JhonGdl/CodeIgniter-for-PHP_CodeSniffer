@@ -49,8 +49,8 @@ class CodeIgniter_Sniffs_Files_Utf8EncodingSniff implements Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */
@@ -66,25 +66,27 @@ class CodeIgniter_Sniffs_Files_Utf8EncodingSniff implements Sniff
         $file_path = $phpcsFile->getFilename();
         $file_name = basename($file_path);
         $file_content = file_get_contents($file_path);
-	
+    
         if (false === mb_check_encoding($file_content, 'UTF-8')) {
             $error = 'File "' . $file_name . '" should be saved with Unicode (UTF-8) encoding.';
             $phpcsFile->addError($error, 0, 'Utf8EncodingSniff::error');
         }
 
-	/** Really slow sniff
-        if ( ! self::_checkUtf8W3c($file_content)) {
-            $error = 'File "' . $file_name . '" should be saved with Unicode (UTF-8) encoding, but it did not successfully pass the W3C test.';
-            $phpcsFile->addError($error, 0, 'Utf8EncodingSniff::w3c');
-	}
-	 */
+        /**
+ * Really slow sniff
+               if ( ! self::_checkUtf8W3c($file_content)) {
+                   $error = 'File "' . $file_name . '" should be saved with Unicode (UTF-8) encoding, but it did not successfully pass the W3C test.';
+                   $phpcsFile->addError($error, 0, 'Utf8EncodingSniff::w3c');
+        }
+         */
 
-	/** kind of slow
-        if ( ! self::_checkUtf8Rfc3629($file_content)) {
-            $error = 'File "' . $file_name . '" should be saved with Unicode (UTF-8) encoding, but it did not meet RFC3629 requirements.';
-            $phpcsFile->addError($error, 0, 'Utf8EncodingSniff::RFC3629');
-	}
-	 */
+        /**
+ * kind of slow
+               if ( ! self::_checkUtf8Rfc3629($file_content)) {
+                   $error = 'File "' . $file_name . '" should be saved with Unicode (UTF-8) encoding, but it did not meet RFC3629 requirements.';
+                   $phpcsFile->addError($error, 0, 'Utf8EncodingSniff::RFC3629');
+        }
+         */
     }//end process()
 
 
@@ -102,10 +104,10 @@ class CodeIgniter_Sniffs_Files_Utf8EncodingSniff implements Sniff
     private static function _checkUtf8W3c($content)
     {
         $content_chunks=self::mb_chunk_split($content, 4096, '');
-    	foreach($content_chunks as $content_chunk)
-		{
-			$preg_result= preg_match(
-            '%^(?:
+        foreach($content_chunks as $content_chunk)
+        {
+            $preg_result= preg_match(
+                '%^(?:
                   [\x09\x0A\x0D\x20-\x7E]            # ASCII
                 | [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
                 |  \xE0[\xA0-\xBF][\x80-\xBF]        # excluding overlongs
@@ -115,15 +117,14 @@ class CodeIgniter_Sniffs_Files_Utf8EncodingSniff implements Sniff
                 | [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
                 |  \xF4[\x80-\x8F][\x80-\xBF]{2}     # plane 16
             )*$%xs',
-            $content_chunk
-			);
-			if($preg_result!==1)
-			{
-				return false;
-			}
+                $content_chunk
+            );
+            if($preg_result!==1) {
+                   return false;
+            }
 
-		}
-		return true;
+        }
+        return true;
     }//end _checkUtf8W3c()
 
     /**
@@ -171,54 +172,56 @@ class CodeIgniter_Sniffs_Files_Utf8EncodingSniff implements Sniff
         }
         return true;
     }//_checkUtf8Rfc3629()
-	 
-	 /**
+     
+    /**
      * Splits a string to chunks of given size
-	 * This helps to avoid segmentation fault errors when large text is given
+     * This helps to avoid segmentation fault errors when large text is given
      * Returns array of strings after splitting
      *
      * @param string $str String to split.
-	 * @param int $len number of characters per chunk
+     * @param int    $len number of characters per chunk
      *
      * @return array string array after splitting
      *
      * @see http://php.net/manual/en/function.chunk-split.php
      */
-	private static function mb_chunk_split($str, $len, $glue) 
-	{
-		if (empty($str)) return false;
-		$array = self::mbStringToArray ($str);
-		$n = -1;
-		$new = Array();
-		foreach ($array as $char) {
-			$n++;
-			if ($n < $len) $new []= $char;
-			elseif ($n == $len) {
-				$new []= $glue . $char;
-				$n = 0;
-			}
-		}
-		return $new;
-	}//mb_chunk_split
-	/**
+    private static function mb_chunk_split($str, $len, $glue) 
+    {
+        if (empty($str)) { return false;
+        }
+        $array = self::mbStringToArray($str);
+        $n = -1;
+        $new = Array();
+        foreach ($array as $char) {
+            $n++;
+            if ($n < $len) { $new []= $char;
+            } elseif ($n == $len) {
+                $new []= $glue . $char;
+                $n = 0;
+            }
+        }
+        return $new;
+    }//mb_chunk_split
+    /**
      * Supporting function for mb_chunk_split
      *
      * @param string $str   
-	 *
+     *
      * @return array 
      *
      * @see http://php.net/manual/en/function.chunk-split.php
      */
-	private static function mbStringToArray ($str) 
-	{
-		if (empty($str)) return false;
-		$len = mb_strlen($str);
-		$array = array();
-		for ($i = 0; $i < $len; $i++) {
-			$array[] = mb_substr($str, $i, 1);
-		}
-		return $array;
-	}
+    private static function mbStringToArray($str) 
+    {
+        if (empty($str)) { return false;
+        }
+        $len = mb_strlen($str);
+        $array = array();
+        for ($i = 0; $i < $len; $i++) {
+            $array[] = mb_substr($str, $i, 1);
+        }
+        return $array;
+    }
 }
 
 ?>

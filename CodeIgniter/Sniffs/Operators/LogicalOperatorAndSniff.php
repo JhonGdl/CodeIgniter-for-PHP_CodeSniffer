@@ -30,7 +30,7 @@ use PHP_CodeSniffer\Files\File;
  */
 class CodeIgniter_Sniffs_Operators_LogicalOperatorAndSniff implements Sniff
 {
-	/**
+    /**
      * Returns an array of tokens this test wants to listen for: symbolic and literal operators and.
      *
      * @return array
@@ -48,8 +48,8 @@ class CodeIgniter_Sniffs_Operators_LogicalOperatorAndSniff implements Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */

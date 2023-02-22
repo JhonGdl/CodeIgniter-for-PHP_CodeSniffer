@@ -65,8 +65,8 @@ class CodeIgniter_Sniffs_Files_ByteOrderMarkSniff implements Sniff
      * so make sure you test as much as needed.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */

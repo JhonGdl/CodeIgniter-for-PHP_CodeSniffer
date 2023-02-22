@@ -40,8 +40,8 @@ class CodeIgniter_Sniffs_Strings_VariableUsageSniff implements Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */
@@ -63,11 +63,11 @@ class CodeIgniter_Sniffs_Strings_VariableUsageSniff implements Sniff
     /**
      * Processes this test, when the token encountered is a double-quoted string.
      *
-     * @param File $phpcsFile   The current file being scanned.
-     * @param int                  $stackPtr    The position of the current token
-     *                                          in the stack passed in $tokens.
-     * @param string               $dblQtString The double-quoted string content,
-     *                                          i.e. without quotes.
+     * @param File   $phpcsFile   The current file being scanned.
+     * @param int    $stackPtr    The position of the current token
+     *                            in the stack passed in $tokens.
+     * @param string $dblQtString The double-quoted string content,
+     *                            i.e. without quotes.
      *
      * @return void
      */
@@ -93,8 +93,8 @@ class CodeIgniter_Sniffs_Strings_VariableUsageSniff implements Sniff
                         $error = 'There is no matching closing curly brace.';
                         $phpcsFile->addError($error, $stackPtr, 'VariableUsageSniff');
                     }
-                // don't move forward, since it will be done in the main loop
-                // $strPtr++;
+                    // don't move forward, since it will be done in the main loop
+                    // $strPtr++;
                 } elseif (T_VARIABLE === $strToken[0]) {
                     $variableFound = true;
                     $error = "Variable {$strToken[1]} in double-quoted strings should be enclosed with curly braces. Please consider {{$strToken[1]}}";
@@ -110,11 +110,11 @@ class CodeIgniter_Sniffs_Strings_VariableUsageSniff implements Sniff
     /**
      * Processes this test, when the token encountered is a single-quoted string.
      *
-     * @param File $phpcsFile   The current file being scanned.
-     * @param int                  $stackPtr    The position of the current token
-     *                                          in the stack passed in $tokens.
-     * @param string               $sglQtString The single-quoted string content,
-     *                                          i.e. without quotes.
+     * @param File   $phpcsFile   The current file being scanned.
+     * @param int    $stackPtr    The position of the current token
+     *                            in the stack passed in $tokens.
+     * @param string $sglQtString The single-quoted string content,
+     *                            i.e. without quotes.
      *
      * @return void
      */
@@ -327,8 +327,8 @@ class CodeIgniter_Sniffs_Strings_DoubleQuoteUsageSniff extends CodeIgniter_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */
@@ -355,11 +355,11 @@ class CodeIgniter_Sniffs_Strings_DoubleQuoteUsageSniff extends CodeIgniter_Sniff
     /**
      * Processes this test, when the token encountered is a double-quoted string.
      *
-     * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
-     * @param string               $qtString  The double-quoted string content,
-     *                                        i.e. without quotes.
+     * @param File   $phpcsFile The current file being scanned.
+     * @param int    $stackPtr  The position of the current token
+     *                          in the stack passed in $tokens.
+     * @param string $qtString  The double-quoted string content,
+     *                          i.e. without quotes.
      *
      * @return void
      */
@@ -388,11 +388,11 @@ class CodeIgniter_Sniffs_Strings_DoubleQuoteUsageSniff extends CodeIgniter_Sniff
     /**
      * Processes this test, when the token encountered is a single-quoted string.
      *
-     * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
-     * @param string               $qtString  The single-quoted string content,
-     *                                        i.e. without quotes.
+     * @param File   $phpcsFile The current file being scanned.
+     * @param int    $stackPtr  The position of the current token
+     *                          in the stack passed in $tokens.
+     * @param string $qtString  The single-quoted string content,
+     *                          i.e. without quotes.
      *
      * @return void
      */
@@ -417,7 +417,7 @@ class CodeIgniter_Sniffs_Strings_DoubleQuoteUsageSniff extends CodeIgniter_Sniff
      * in double-quoted strings is found, FALSE otherwise.
      *
      * @param string $string String in which sequence of special chars will
-     * be researched.
+     *                       be researched.
      *
      * @return TRUE, if a sequence of chars that is parsed in a specific way
      * in double-quoted strings is found, FALSE otherwise.

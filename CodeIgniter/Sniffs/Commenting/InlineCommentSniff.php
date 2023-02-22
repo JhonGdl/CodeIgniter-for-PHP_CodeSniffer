@@ -51,8 +51,8 @@ class CodeIgniter_Sniffs_Commenting_InlineCommentSniff implements Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */
@@ -63,7 +63,7 @@ class CodeIgniter_Sniffs_Commenting_InlineCommentSniff implements Sniff
         // keep testing only if it's about the first comment of the block
         $previousCommentPtr = $phpcsFile->findPrevious($tokens[$stackPtr]['code'], $stackPtr - 1);
         if ($tokens[$previousCommentPtr]['line'] !== $tokens[$stackPtr]['line'] - 1) {
-            if (TRUE !== $this->_checkCommentStyle($phpcsFile, $stackPtr)) {
+            if (true !== $this->_checkCommentStyle($phpcsFile, $stackPtr)) {
                 return;
             }
 
@@ -81,8 +81,8 @@ class CodeIgniter_Sniffs_Commenting_InlineCommentSniff implements Sniff
      * with '//'.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        that has to be a comment.
+     * @param int  $stackPtr  The position of the current token
+     *                        that has to be a comment.
      * 
      * @return bool TRUE if the content of the token pointed by $stackPtr starts
      *              with //, FALSE if an error was added to $phpcsFile.
@@ -93,19 +93,19 @@ class CodeIgniter_Sniffs_Commenting_InlineCommentSniff implements Sniff
         if ($tokens[$stackPtr]['content'][0] === '#') {
             $error  = 'Perl-style comments are not allowed; use "// Comment" or DocBlock comments instead';
             $phpcsFile->addError($error, $stackPtr, 'WrongStyle');
-            return FALSE;
+            return false;
         } else if (substr($tokens[$stackPtr]['content'], 0, 2) === '/*'
             || $tokens[$stackPtr]['content'][0] === '*'
         ) {
             $error  = 'Multi lines comments are not allowed; use "// Comment" DocBlock comments instead';
             $phpcsFile->addError($error, $stackPtr, 'WrongStyle');
-            return FALSE;
+            return false;
         } else if (substr($tokens[$stackPtr]['content'], 0, 2) !== '//') {
             $error  = 'Use single line or DocBlock comments within code';
             $phpcsFile->addError($error, $stackPtr, 'WrongStyle');
-            return FALSE;
+            return false;
         }
-        return TRUE;
+        return true;
     }//_checkCommentStyle()
 
 
@@ -113,7 +113,7 @@ class CodeIgniter_Sniffs_Commenting_InlineCommentSniff implements Sniff
      * Gather into an array all comment lines to which $stackPtr belongs.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  Pointer to the first comment line.
+     * @param int  $stackPtr  Pointer to the first comment line.
      * 
      * @return type array Pointers to tokens making up the comment block.
      */
@@ -141,15 +141,15 @@ class CodeIgniter_Sniffs_Commenting_InlineCommentSniff implements Sniff
     /**
      * Add errors to $phpcsFile, if $commentLines isn't enclosed with blank lines.
      *
-     * @param File $phpcsFile    The current file being scanned.
-     * @param array                $commentLines Lines of the comment block being checked.
+     * @param File  $phpcsFile    The current file being scanned.
+     * @param array $commentLines Lines of the comment block being checked.
      * 
      * @return bool TRUE if $commentLines is enclosed with at least a blank line
      * before and after, FALSE otherwise.
      */
     private function _checkBlankLinesAroundLongComment(File $phpcsFile, array $commentLines)
     {
-        $hasBlankLinesAround = TRUE;
+        $hasBlankLinesAround = true;
         $tokens = $phpcsFile->getTokens();
 
         // check blank line before the long comment
@@ -161,7 +161,7 @@ class CodeIgniter_Sniffs_Commenting_InlineCommentSniff implements Sniff
         if ($tokens[$firstPreviousSpacePtr]['line'] >= $tokens[$firstCommentPtr]['line'] - 1) {
             $error  = "Please add a blank line before comments counting more than {$this->longCommentLimit} lines.";
             $phpcsFile->addError($error, $firstCommentPtr, 'LongCommentWithoutSpacing');
-            $hasBlankLinesAround = FALSE;
+            $hasBlankLinesAround = false;
         }
 
         // check blank line after the long comment
@@ -173,7 +173,7 @@ class CodeIgniter_Sniffs_Commenting_InlineCommentSniff implements Sniff
         if ($tokens[$lastNextSpacePtr]['line'] <= $tokens[$lastCommentPtr]['line'] + 1) {
             $error  = "Please add a blank line after comments counting more than {$this->longCommentLimit} lines.";
             $phpcsFile->addError($error, $lastCommentPtr, 'LongCommentWithoutSpacing');
-            $hasBlankLinesAround = FALSE;
+            $hasBlankLinesAround = false;
         }
 
         return $hasBlankLinesAround;

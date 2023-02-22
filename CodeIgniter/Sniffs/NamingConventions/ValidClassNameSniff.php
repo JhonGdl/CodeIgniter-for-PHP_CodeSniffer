@@ -53,8 +53,8 @@ class CodeIgniter_Sniffs_NamingConventions_ValidClassNameSniff implements Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param File $phpcsFile The current file being processed.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */
@@ -66,7 +66,7 @@ class CodeIgniter_Sniffs_NamingConventions_ValidClassNameSniff implements Sniff
         // [^_] means "something different from _", but not "nothing or something different from _"
         $lcClassNameChunk = preg_replace('/([^_])([A-Z])/', '${1}_${2}', $className);
         $expectedClassName
-            = strtoupper($className[0]) . strtolower(substr($lcClassNameChunk,1));
+            = strtoupper($className[0]) . strtolower(substr($lcClassNameChunk, 1));
         // ensures that the current class name
         // and the expected class name are identical
         if (0 !== strcmp($className, $expectedClassName)) {

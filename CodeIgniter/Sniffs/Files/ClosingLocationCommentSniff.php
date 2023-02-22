@@ -66,8 +66,8 @@ class CodeIgniter_Sniffs_Files_ClosingLocationCommentSniff extends AbstractClosi
      * Processes this test, when one of its tokens is encountered.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */
@@ -116,7 +116,7 @@ class CodeIgniter_Sniffs_Files_ClosingLocationCommentSniff extends AbstractClosi
             $currentToken--;
         }
 
-        if ( ! $hasClosingLocationComment) {
+        if (! $hasClosingLocationComment) {
             $error = 'No comment block marks the end of file instead of the closing PHP tag. Please add a comment block containing only "' . $commentTemplate . '".';
             $phpcsFile->addError($error, $currentToken, 'ClosingLocationCommentSniff');
         }
@@ -130,15 +130,15 @@ class CodeIgniter_Sniffs_Files_ClosingLocationCommentSniff extends AbstractClosi
      *
      * @param string $filePath Full path to the file being proceed.
      * @param string $appRoot  Partial or full path to the CodeIgniter
-     * application root of the file being proceed. It must not contain the
-     * full path to the application root, but at least the name of the
-     * application root. Parent directory of the application root are allowed
-     * but not mandatory.
+     *                         application root of the file being proceed. It must not contain the
+     *                         full path to the application root, but at least the name of the
+     *                         application root. Parent directory of the application root are allowed
+     *                         but not mandatory.
      *
      * @return string|bool The relative path from $appRoot to $filePath, or
      * false if $appRoot cannot be found in $filePath.
      */
-    private static function _getLocationPath ($filePath, $appRoot)
+    private static function _getLocationPath($filePath, $appRoot)
     {
         // removes the path to application root
         // from the beginning of the file path
@@ -148,9 +148,9 @@ class CodeIgniter_Sniffs_Files_ClosingLocationCommentSniff extends AbstractClosi
         }
         $localPath = substr($filePath, $appRootAt + strlen($appRoot));
         // ensures the location path to be a relative path starting with "./".
-        if ( ! self::_stringStartsWith($localPath, './')) {
+        if (! self::_stringStartsWith($localPath, './')) {
             $localPath = './' . $localPath;
-        } else if ( ! self::_stringStartsWith($localPath, '.')
+        } else if (! self::_stringStartsWith($localPath, '.')
             && self::_stringStartsWith($localPath, '/')
         ) {
             $localPath = '.' . $localPath;

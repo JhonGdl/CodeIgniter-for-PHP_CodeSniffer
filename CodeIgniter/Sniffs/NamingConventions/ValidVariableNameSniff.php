@@ -48,8 +48,8 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
      * Processes class member variables.
      *
      * @param File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */
@@ -61,7 +61,7 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
         $varName = substr($varTk['content'], 1);
         $varProps = $phpcsFile->getMemberProperties($stackPtr);
         // check(s)
-        if ( ! $this->checkLength($phpcsFile, $stackPtr, $varName)) {
+        if (! $this->checkLength($phpcsFile, $stackPtr, $varName)) {
             return;
         }
 
@@ -72,7 +72,7 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
      * Processes normal variables.
      *
      * @param File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int  $stackPtr  The position where the token was found.
      *
      * @return void
      */
@@ -86,7 +86,7 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
         if (0 === strcmp($varName, 'this')) {
             return;
         }
-        if ( ! $this->checkLength($phpcsFile, $stackPtr, $varName)) {
+        if (! $this->checkLength($phpcsFile, $stackPtr, $varName)) {
             return;
         }
 
@@ -97,7 +97,7 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
      * Processes variables in double quoted strings.
      *
      * @param File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int  $stackPtr  The position where the token was found.
      *
      * @return void
      */
@@ -113,7 +113,7 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
             preg_match('/^\$\{?([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)\}?/', substr($stringString, $varAt), $matches);
             $varName = $matches[1];
             // check(s)
-            if ( ! $this->checkLength($phpcsFile, $stackPtr, $varName)) {
+            if (! $this->checkLength($phpcsFile, $stackPtr, $varName)) {
                 return;
             }
             // prepare checking next variable
@@ -134,11 +134,11 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
      * The list of allowed short names is defined in the function.
      * It is case-sensitive. It contains only 'ci' now.
      *
-     * @param File $phpcsFile The current file being processed.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
-     * @param string               $varName   The name of the variable to
-     *                                        procced without $, { nor }.
+     * @param File   $phpcsFile The current file being processed.
+     * @param int    $stackPtr  The position of the current token
+     *                          in the stack passed in $tokens.
+     * @param string $varName   The name of the variable to
+     *                          procced without $, { nor }.
      *
      * @return bool false if variable name $varName is shorter than the minimal
      * length and it isn't in the list of allowed short names nor declared in a
@@ -180,11 +180,11 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
      * Returns the position of closest previous T_FOR, if token associated with
      * $stackPtr in $phpcsFile is in a for loop, otherwise false.
      *
-     * @param File $phpcsFile The current file being processed.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
-     * @param string               $varName   The name of the variable to
-     *                                        procced without $, { nor }.
+     * @param File   $phpcsFile The current file being processed.
+     * @param int    $stackPtr  The position of the current token
+     *                          in the stack passed in $tokens.
+     * @param string $varName   The name of the variable to
+     *                          procced without $, { nor }.
      *
      * @return int|bool Position of T_FOR if token associated with $stackPtr in
      *                  $phpcsFile is in the head of a for loop, otherwise false.
@@ -218,8 +218,8 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
      * 'for' : for (<loop_head>) {<loop_body>}.
      * 
      * @param File $phpcsFile The current file being processed.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      * 
      * @return int|bool Position of T_FOR if token associated with $stackPtr in
      *                  $phpcsFile is in the head of a for loop, otherwise false.
@@ -260,8 +260,8 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
      * 'for' : for (<loop_head>) {<loop_body>}.
      *
      * @param File $phpcsFile The current file being processed.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return int|bool Position of T_FOR if token associated with $stackPtr in
      *                  $phpcsFile is in the body of a for loop, otherwise false.
@@ -349,11 +349,11 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
      * Returns true if a variable declared in the head of the for loop pointed
      * by $forPtr in file $phpcsFile has the name $varName.
      *
-     * @param File $phpcsFile The current file being processed.
-     * @param int                  $forPtr    The position of the 'for' token
-     *                                        in the stack passed in $tokens.
-     * @param string               $varName   The name of the variable to
-     *                                        procced without $, { nor }.
+     * @param File   $phpcsFile The current file being processed.
+     * @param int    $forPtr    The position of the 'for' token
+     *                          in the stack passed in $tokens.
+     * @param string $varName   The name of the variable to
+     *                          procced without $, { nor }.
      *
      * @return int|bool true if a variable declared in the head of the for loop
      * pointed by $forPtr in file $phpcsFile has the name $varName.
@@ -386,8 +386,8 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
      * code T_FOR.
      *
      * @param File $phpcsFile The current file being processed.
-     * @param int                  $forPtr    The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $forPtr    The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return array List of pointers to variables declared in for loop $forPtr.
      */
@@ -458,7 +458,7 @@ class CodeIgniter_Sniffs_NamingConventions_ValidVariableNameSniff extends Abstra
             }
             // update $var_starts_at for the next variable
             // only if no variable was found, since it is returned otherwise.
-            if ( ! $is_a_var) {
+            if (! $is_a_var) {
                 $var_starts_at = strpos($haystack, '$', $var_starts_at + 1);
             }
         }

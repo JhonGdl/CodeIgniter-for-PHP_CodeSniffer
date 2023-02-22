@@ -66,9 +66,9 @@
   <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
   <rule ref="PEAR.WhiteSpace.ScopeClosingBrace"/>
   <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+  <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
 
   <!-- @todo Please see
 PHP_CodeSniffer_Standards_CodeIgniter_CodeIgniterCodingStandard for more details
 about what there is to do -->
 </ruleset>
-

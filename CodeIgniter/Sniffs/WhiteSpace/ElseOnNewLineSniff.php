@@ -49,8 +49,8 @@ class CodeIgniter_Sniffs_WhiteSpace_ElseOnNewLineSniff implements Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
-     *                                        in the stack passed in $tokens.
+     * @param int  $stackPtr  The position of the current token
+     *                        in the stack passed in $tokens.
      *
      * @return void
      */
@@ -62,8 +62,8 @@ class CodeIgniter_Sniffs_WhiteSpace_ElseOnNewLineSniff implements Sniff
         $previous_non_blank_token_ptr = $phpcsFile->findPrevious(array(T_WHITESPACE), $stackPtr - 1, null, true);
 
         if (false === $previous_non_blank_token_ptr) {
-        	// else is no preceded with any symbol, but it is not the responsibility of this sniff.
-        	return;
+            // else is no preceded with any symbol, but it is not the responsibility of this sniff.
+            return;
         }
 
         $previous_non_blank_token = $tokens[$previous_non_blank_token_ptr];

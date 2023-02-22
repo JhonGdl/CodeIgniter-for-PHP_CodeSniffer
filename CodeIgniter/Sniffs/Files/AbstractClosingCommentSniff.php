@@ -38,7 +38,7 @@ class AbstractClosingCommentSniff implements Sniff
      */
     public function register()
     {
-      return array();
+        return array();
     }
 
     /**
@@ -46,8 +46,8 @@ class AbstractClosingCommentSniff implements Sniff
      */
     public function process(File $phpcsFile, $stackPtr)
     {
-      $error = __CLASS__.'::'.__METHOD__.' is abstract. Please develop this method in a child class.';
-      throw new PHP_CodeSniffer_Exception($error);
+        $error = __CLASS__.'::'.__METHOD__.' is abstract. Please develop this method in a child class.';
+        throw new PHP_CodeSniffer_Exception($error);
     }
 
     /**
@@ -59,11 +59,11 @@ class AbstractClosingCommentSniff implements Sniff
      * as well as whitespaces between this star and the comment content.
      *
      * @param string $comment Comment containing either comment delimiter(s) and
-     * trailing or leading whitspaces to clean.
+     *                        trailing or leading whitspaces to clean.
      *
      * @return string Comment without comment delimiter(s) and whitespaces.
      */
-    protected static function _getCommentContent ($comment)
+    protected static function _getCommentContent($comment)
     {
         if (self::_stringStartsWith($comment, '#')) {
             $comment = substr($comment, 1);
@@ -87,7 +87,7 @@ class AbstractClosingCommentSniff implements Sniff
      *
      * @return bool true if $haystack starts with $needle, false otherwise.
      */
-    protected static function _stringStartsWith ($haystack, $needle)
+    protected static function _stringStartsWith($haystack, $needle)
     {
         $startsWith = false;
         if (strlen($needle) <= strlen($haystack)) {
