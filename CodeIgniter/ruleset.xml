@@ -53,16 +53,8 @@
   <rule ref="PEAR.Commenting.FunctionComment"/>
   <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
   <!-- Use warnings for docblock comments for files and variables, since nothing is cleary explained -->
-  <rule ref="PEAR.Commenting.FileComment">
-    <properties>
-      <property name="error" value="false"/>
-    </properties>
-  </rule>
-  <rule ref="Squiz.Commenting.VariableComment">
-    <properties>
-      <property name="error" value="false"/>
-    </properties>
-  </rule>
+  <rule ref="PEAR.Commenting.FileComment"/>
+  <rule ref="Squiz.Commenting.VariableComment"/>
   <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
   <rule ref="PEAR.WhiteSpace.ScopeClosingBrace"/>
   <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
